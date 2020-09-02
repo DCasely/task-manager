@@ -1,10 +1,17 @@
 // CRUD - CREATE READ UPDATE DELETE
 
-const mongodb = require('mongodb');
-const MongoClient = mongodb.MongoClient;
+// const mongodb = require('mongodb');
+// const MongoClient = mongodb.MongoClient;
+// const ObjectID = mongodb.ObjectID;
+
+const { MongoClient, ObjectID } = require('mongodb');
 
 const connectionURL = 'mongodb://127.0.0.1:27017';
 const databaseName = 'task-manager';
+
+const id = new ObjectID();
+console.log(id.id.length);
+console.log(id.toHexString().length);
 
 MongoClient.connect(
   connectionURL,
@@ -18,8 +25,8 @@ MongoClient.connect(
 
     // db.collection('users').insertOne(
     //   {
-    //     name: 'Davin',
-    //     age: 30,
+    //     name: 'Casely',
+    //     age: 21,
     //   },
     //   (error, result) => {
     //     if (error) {
@@ -50,28 +57,28 @@ MongoClient.connect(
     //   }
     // );
 
-    db.collection('tasks').insertMany(
-      [
-        {
-          task: 'Get To Top 1% on CodeWars',
-          completed: false,
-        },
-        {
-          task: 'Become a Full Stack Developer',
-          completed: true,
-        },
-        {
-          task: 'Develop My Own Business',
-          completed: false,
-        },
-      ],
-      (error, result) => {
-        if (error) {
-          return console.log('Error while inserting documents');
-        }
+    // db.collection('tasks').insertMany(
+    //   [
+    //     {
+    //       task: 'Get To Top 1% on CodeWars',
+    //       completed: false,
+    //     },
+    //     {
+    //       task: 'Become a Full Stack Developer',
+    //       completed: true,
+    //     },
+    //     {
+    //       task: 'Develop My Own Business',
+    //       completed: false,
+    //     },
+    //   ],
+    //   (error, result) => {
+    //     if (error) {
+    //       return console.log('Error while inserting documents');
+    //     }
 
-        console.log(result.ops);
-      }
-    );
+    //     console.log(result.ops);
+    //   }
+    // );
   }
 );
