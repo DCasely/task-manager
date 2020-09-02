@@ -40,17 +40,39 @@ MongoClient.connect(
     //     console.log(error);
     //   });
 
+    // db.collection('tasks')
+    //   .updateMany(
+    //     {
+    //       completed: false,
+    //     },
+    //     {
+    //       $set: {
+    //         completed: true,
+    //       },
+    //     }
+    //   )
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+
+    //   db.collection('users')
+    //     .deleteMany({
+    //       name: 'Jack',
+    //     })
+    //     .then((result) => {
+    //       console.log(result);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+
     db.collection('tasks')
-      .updateMany(
-        {
-          completed: false,
-        },
-        {
-          $set: {
-            completed: true,
-          },
-        }
-      )
+      .deleteOne({
+        _id: new ObjectID('5f4f099ab39241c78cf905a3'),
+      })
       .then((result) => {
         console.log(result);
       })
