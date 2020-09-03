@@ -50,6 +50,32 @@ app.post('/tasks', (req, res) => {
     });
 });
 
+app.get('/tasks', (req, res) => {
+  Task.find({})
+    .then((tasks) => {
+      return res.send(tasks);
+    })
+    .catch((e) => {
+      res.send(e);
+    });
+});
+
+app.get('/tasks/:id', (req, res) => {
+  const _id = req.params.id;
+
+  Task.findById(_id)
+    .then((task) => {
+      if (!task) {
+        return res.status(404).send();
+      }
+
+      res.send(task);
+    })
+    .catch((e) => {
+      res.status(500).send(e);
+    });
+});
+
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
